@@ -6,12 +6,13 @@
     <title>LD Bordados Personalizados | Arte e Exclusividade</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        /* Definindo a paleta de cores da marca - mexer aqui muda no site todo! */
         :root {
-            --primary: #c5a059; /* Dourado Bordado */
-            --secondary: #2c2c2c; /* Cinza Escuro Profissional */
-            --bg-light: #f9f7f2; /* Fundo suave */
+            --primary: #c5a059; /* Dourado Bordado - Traz o tom de luxo */
+            --secondary: #2c2c2c; /* Cinza Escuro - Mais sofisticado que o preto puro */
+            --bg-light: #f9f7f2; /* Fundo suave para não cansar a vista */
             --white: #ffffff;
-            --whatsapp: #25d366;
+            --whatsapp: #25d366; /* Verde oficial do zap */
         }
 
         * {
@@ -28,7 +29,7 @@
             scroll-behavior: smooth;
         }
 
-        /* --- Header --- */
+        /* --- Cabeçalho (Header) --- */
         header {
             background: var(--white);
             padding: 15px 5%;
@@ -39,12 +40,21 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08); /* Sombra um pouquinho mais presente */
+            transition: all 0.3s ease;
         }
 
+        /* AUMENTO DA LOGO AQUI (De 60px para 85px) */
         .logo img {
-            height: 60px; /* Ajuste conforme seu logo */
+            height: 85px; 
             display: block;
+        }
+
+        /* Área de navegação - Desktop */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
         }
 
         nav ul {
@@ -60,16 +70,34 @@
             font-size: 14px;
             text-transform: uppercase;
             transition: 0.3s;
+            position: relative;
+        }
+
+        /* Efeito de sublinhado chique ao passar o mouse */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         nav a:hover {
             color: var(--primary);
         }
 
-        /* --- Hero Section --- */
+        /* --- Primeira Dobra (Hero Section) - Onde a mágica acontece! --- */
         .hero {
             height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('banner-principal.jpg'); /* ESPAÇO PARA FOTO */
+            /* Máscara escura sobre a foto para o texto branco ler bem */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('banner-principal.jpg'); 
             background-size: cover;
             background-position: center;
             display: flex;
@@ -84,17 +112,19 @@
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para destacar o título */
         }
 
         .hero p {
             font-size: 1.2rem;
             max-width: 700px;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
-        /* --- Buttons --- */
+        /* --- Botões de Alta Conversão --- */
         .btn-gold {
             background: var(--primary);
             color: var(--white);
@@ -102,22 +132,33 @@
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            transition: 0.4s;
+            transition: all 0.4s ease;
             border: none;
             cursor: pointer;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4); /* Brilho dourado no botão */
         }
 
         .btn-gold:hover {
             background: #ab8a4a;
-            transform: scale(1.05);
+            transform: translateY(-3px); /* Levanta um pouquinho ao passar o mouse */
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.6);
         }
 
-        /* --- Categorias/Destaques --- */
+        /* Botão menor para o cabeçalho */
+        .btn-header {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+
+        /* --- Seções Gerais --- */
         .section-title {
             text-align: center;
             padding: 60px 20px 20px;
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
         }
 
         .container {
@@ -126,6 +167,7 @@
             padding: 40px 20px;
         }
 
+        /* --- Grid de Produtos --- */
         .grid-produtos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -136,14 +178,19 @@
             background: var(--white);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: all 0.4s ease;
             text-align: center;
-            padding-bottom: 20px;
+            padding-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Mantém os botões alinhados embaixo */
+            height: 100%;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
         .product-img {
@@ -152,19 +199,113 @@
             background-color: #eee;
             background-size: cover;
             background-position: center;
+            transition: transform 0.5s ease;
         }
 
-        /* --- Placeholders de Imagens nos Cards --- */
+        .product-card:hover .product-img {
+            transform: scale(1.05); /* Efeito de zoom na foto do produto */
+        }
+
+        /* Nomes exatos das imagens que você precisa colocar na pasta */
         .img-casula { background-image: url('produto-casula.jpg'); }
         .img-toalha { background-image: url('produto-toalha.jpg'); }
         .img-kit { background-image: url('produto-kit.jpg'); }
 
         .product-card h3 {
             margin: 20px 0 10px;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            font-family: 'Playfair Display', serif;
         }
 
-        /* --- WhatsApp Floating --- */
+        .product-card p {
+            padding: 0 15px;
+            margin-bottom: 20px;
+            color: #666;
+            flex-grow: 1;
+        }
+
+        /* --- Prova Social (Depoimentos e Destaque) --- */
+        .depoimentos {
+            background-color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .grid-depoimentos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .depoimento-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 10px;
+            font-style: italic;
+            border-left: 4px solid var(--primary);
+            transition: 0.3s;
+        }
+
+        .depoimento-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .cliente-nome {
+            font-weight: bold;
+            font-style: normal;
+            margin-top: 15px;
+            color: var(--primary);
+        }
+
+        /* Espaço para o cliente em destaque (Danilo Alves) */
+        .cliente-destaque {
+            margin-top: 60px;
+            padding-top: 60px;
+            border-top: 1px solid #eaeaea;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .img-cliente-destaque {
+            width: 280px;
+            height: 280px;
+            background-color: #eee;
+            /* COLOQUE AQUI A FOTO DO DANILO -> cliente-danilo.jpg */
+            background-image: url('cliente-danilo.jpg'); 
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            border: 4px solid var(--primary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            transition: 0.4s;
+        }
+
+        .img-cliente-destaque:hover {
+            transform: translateY(-5px);
+        }
+
+        .arroba-cliente {
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .arroba-cliente a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .arroba-cliente a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Botão do WhatsApp Flutuante com Animação --- */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -178,16 +319,37 @@
             justify-content: center;
             align-items: center;
             font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 2px 2px 15px rgba(37, 211, 102, 0.4);
             z-index: 1000;
             transition: 0.3s;
+            animation: pulse-green 2s infinite; /* Chama muito a atenção do cliente! */
         }
 
         .whatsapp-float:hover {
             transform: scale(1.1);
+            animation: none;
         }
 
-        /* --- Footer --- */
+        /* --- Animações CSS --- */
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Classes para a animação de rolagem (JavaScript ativa isso) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Rodapé (Footer) --- */
         footer {
             background: var(--secondary);
             color: var(--white);
@@ -203,17 +365,30 @@
             text-align: left;
         }
 
-        .footer-logo img { height: 50px; margin-bottom: 20px; }
+        /* AUMENTO DA LOGO DO RODAPÉ AQUI (De 50px para 75px) */
+        .footer-logo img { 
+            height: 75px; 
+            margin-bottom: 20px; 
+        }
+        
+        .footer-grid a { color: var(--primary); text-decoration: none;}
+        .footer-grid a:hover { text-decoration: underline; }
 
+        /* --- Responsividade (Para Celulares) --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            nav { display: none; } /* Simplicidade para mobile inicialmente */
+            nav ul { display: none; } /* Oculta o menu de texto no celular para ficar limpo */
+            .btn-header { display: none; } /* Esconde o botão do cabeçalho no mobile por espaço */
+            .hero p { font-size: 1rem; }
+            
+            /* No celular, a foto do ateliê e o texto empilham certinho */
+            .sobre-container { flex-direction: column; } 
         }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/5583981583555" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20LD%20Bordados%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="whatsapp-float" target="_blank" aria-label="Fale conosco no WhatsApp">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
     </a>
 
@@ -228,77 +403,130 @@
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
+            <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20LD%20Bordados%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="btn-gold btn-header" target="_blank">Fazer Orçamento</a>
         </nav>
     </header>
 
-    <section id="inicio" class="hero">
+    <section id="inicio" class="hero reveal">
         <h1>Bordados que Contam Histórias</h1>
         <p>Especialistas em Vestes Litúrgicas e Enxovais Personalizados com acabamento de alta costura.</p>
-        <a href="https://wa.me/5583981583555" class="btn-gold">Solicitar Orçamento Grátis</a>
+        <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20LD%20Bordados%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="btn-gold" target="_blank">Solicitar Orçamento Grátis</a>
     </section>
 
     <div class="container" id="produtos">
-        <h2 class="section-title">Nossas Coleções</h2>
+        <h2 class="section-title reveal">Nossas Coleções</h2>
         <div class="grid-produtos">
             
-            <div class="product-card">
+            <div class="product-card reveal">
                 <div class="product-img img-casula"></div>
                 <h3>Vestes Litúrgicas</h3>
-                <p>Casulas e estolas com bordados sacros exclusivos.</p>
-                <br>
-                <a href="https://wa.me/5583981583555" class="btn-gold">Ver Detalhes</a>
+                <p>Casulas e estolas com bordados sacros exclusivos, confeccionados com respeito e devoção.</p>
+                <div>
+                    <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20LD%20Bordados%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Vestes%20Lit%C3%BArgicas." class="btn-gold" target="_blank">Ver Detalhes</a>
+                </div>
             </div>
 
-            <div class="product-card">
+            <div class="product-card reveal" style="transition-delay: 0.2s;">
                 <div class="product-img img-toalha"></div>
                 <h3>Linha Casa & Presentes</h3>
-                <p>Toalhas personalizadas para batizados e datas especiais.</p>
-                <br>
-                <a href="https://wa.me/5583981583555" class="btn-gold">Ver Detalhes</a>
+                <p>Toalhas luxuosas e personalizadas para batizados, casamentos e datas inesquecíveis.</p>
+                <div>
+                    <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20LD%20Bordados%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20a%20Linha%20Casa%20e%20Presentes." class="btn-gold" target="_blank">Ver Detalhes</a>
+                </div>
             </div>
 
-            <div class="product-card">
+            <div class="product-card reveal" style="transition-delay: 0.4s;">
                 <div class="product-img img-kit"></div>
                 <h3>Kits Corporativos</h3>
-                <p>Personalização de uniformes e brindes de luxo.</p>
-                <br>
-                <a href="https://wa.me/5583981583555" class="btn-gold">Ver Detalhes</a>
+                <p>Personalização de uniformes e brindes de luxo para elevar a marca da sua empresa.</p>
+                <div>
+                    <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20LD%20Bordados%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20Kits%20Corporativos." class="btn-gold" target="_blank">Ver Detalhes</a>
+                </div>
             </div>
 
         </div>
     </div>
 
     <section id="sobre" style="background: white; padding: 80px 20px;">
-        <div class="container" style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
+        <div class="container sobre-container reveal" style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
             <div style="flex: 1; min-width: 300px;">
-                <img src="foto-ateliê.jpg" alt="Nosso Ateliê" style="width: 100%; border-radius: 10px; box-shadow: 20px 20px 0 var(--primary);">
+                <img src="foto-ateliê.jpg" alt="Nosso Ateliê" style="width: 100%; border-radius: 10px; box-shadow: -15px 15px 0 var(--primary);">
             </div>
             <div style="flex: 1; min-width: 300px;">
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px;">Tradição e Tecnologia</h2>
-                <p>Na LD Bordados, unimos a precisão do bordado computadorizado com o olhar atento ao detalhe que só o trabalho artesanal possui. Localizados em João Pessoa, atendemos todo o Brasil enviando arte e devoção em forma de fios.</p>
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px; color: var(--secondary);">Tradição e Tecnologia</h2>
+                <p style="margin-bottom: 15px;">Na LD Bordados, unimos a precisão do bordado computadorizado com o olhar atento ao detalhe que só o trabalho artesanal possui.</p>
+                <p>Localizados em João Pessoa, atendemos todo o Brasil enviando arte, cuidado e devoção em forma de fios diretamente para você.</p>
             </div>
+        </div>
+    </section>
+
+    <section class="depoimentos">
+        <h2 class="section-title reveal">O que dizem nossos clientes</h2>
+        <div class="grid-depoimentos reveal">
+            <div class="depoimento-card">
+                <p>"As casulas ficaram belíssimas! Acabamento impecável e entrega no prazo. Deus abençoe o trabalho de vocês."</p>
+                <p class="cliente-nome">- Pe. Antônio</p>
+            </div>
+            <div class="depoimento-card">
+                <p>"Comprei um kit de toalhas para o batizado do meu sobrinho. A emoção da família ao ver o bordado foi impagável!"</p>
+                <p class="cliente-nome">- Maria das Graças</p>
+            </div>
+            <div class="depoimento-card">
+                <p>"Os uniformes da nossa clínica ficaram perfeitos! O bordado em dourado deu um toque de muita elegância e profissionalismo."</p>
+                <p class="cliente-nome">- Dra. Beatriz Castro</p>
+            </div>
+            <div class="depoimento-card">
+                <p>"Atendimento maravilhoso e cuidado em cada detalhe. A estola personalizada que encomendei superou todas as expectativas."</p>
+                <p class="cliente-nome">- Diác. João Paulo</p>
+            </div>
+        </div>
+
+        <div class="cliente-destaque reveal">
+            <h3 style="margin-bottom: 20px; font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--secondary);">Veste quem você confia</h3>
+            <div class="img-cliente-destaque"></div>
+            <p class="arroba-cliente"><a href="https://www.instagram.com/daniloalvestv/" target="_blank">@daniloalvestv</a></p>
+            <p style="max-width: 600px; text-align: center; margin-top: 10px; color: #666;">
+                É uma honra ver nossa arte marcando presença no dia a dia de grandes profissionais. Qualidade e exclusividade em cada ponto!
+            </p>
         </div>
     </section>
 
     <footer id="contato">
         <div class="footer-grid">
-            <div>
-                <img src="seu-logo-branco.png" alt="LD Bordados" style="height: 50px;">
-                <p>Transformando fios em momentos inesquecíveis.</p>
+            <div class="footer-logo">
+                <img src="seu-logo-branco.png" alt="LD Bordados">
+                <p style="opacity: 0.8;">Transformando fios em momentos inesquecíveis.</p>
             </div>
             <div>
                 <h4>Contato</h4>
+                <br>
                 <p>📍 João Pessoa - PB</p>
                 <p>📞 (83) 98158-3555</p>
                 <p>✉️ contato@ldbordados.com.br</p>
             </div>
             <div>
                 <h4>Siga-nos</h4>
-                <a href="https://www.instagram.com/ldbordados_personalizados/" style="color:white">Instagram</a>
+                <br>
+                <p><a href="https://www.instagram.com/ldbordados_personalizados/" target="_blank">Instagram</a></p>
             </div>
         </div>
-        <p>&copy; 2024 LD Bordados Personalizados - Todos os direitos reservados.</p>
+        <p style="opacity: 0.6; font-size: 14px;">&copy; 2024 LD Bordados Personalizados - Todos os direitos reservados.</p>
     </footer>
 
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Ponto onde a animação dispara
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Ativa para os elementos que já estão na tela ao carregar
+    </script>
 </body>
 </html>
