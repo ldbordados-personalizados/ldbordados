@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LD Bordados Personalizados | Arte e Exclusividade</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c5a059; /* Dourado Bordado */
+            --secondary: #2c2c2c; /* Cinza Escuro Profissional */
+            --bg-light: #f9f7f2; /* Fundo suave */
+            --white: #ffffff;
+            --whatsapp: #25d366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--secondary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Header --- */
+        header {
+            background: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo img {
+            height: 60px; /* Ajuste conforme seu logo */
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('banner-principal.jpg'); /* ESPAÇO PARA FOTO */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        /* --- Buttons --- */
+        .btn-gold {
+            background: var(--primary);
+            color: var(--white);
+            padding: 15px 35px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.4s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-gold:hover {
+            background: #ab8a4a;
+            transform: scale(1.05);
+        }
+
+        /* --- Categorias/Destaques --- */
+        .section-title {
+            text-align: center;
+            padding: 60px 20px 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .grid-produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 300px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* --- Placeholders de Imagens nos Cards --- */
+        .img-casula { background-image: url('produto-casula.jpg'); }
+        .img-toalha { background-image: url('produto-toalha.jpg'); }
+        .img-kit { background-image: url('produto-kit.jpg'); }
+
+        .product-card h3 {
+            margin: 20px 0 10px;
+            font-size: 1.3rem;
+        }
+
+        /* --- WhatsApp Floating --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--whatsapp);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 60px 5% 20px;
+            text-align: center;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .footer-logo img { height: 50px; margin-bottom: 20px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { display: none; } /* Simplicidade para mobile inicialmente */
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/5583981583555" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
+    </a>
+
+    <header>
+        <div class="logo">
+            <img src="seu-logo.png" alt="LD Bordados">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <h1>Bordados que Contam Histórias</h1>
+        <p>Especialistas em Vestes Litúrgicas e Enxovais Personalizados com acabamento de alta costura.</p>
+        <a href="https://wa.me/5583981583555" class="btn-gold">Solicitar Orçamento Grátis</a>
+    </section>
+
+    <div class="container" id="produtos">
+        <h2 class="section-title">Nossas Coleções</h2>
+        <div class="grid-produtos">
+            
+            <div class="product-card">
+                <div class="product-img img-casula"></div>
+                <h3>Vestes Litúrgicas</h3>
+                <p>Casulas e estolas com bordados sacros exclusivos.</p>
+                <br>
+                <a href="https://wa.me/5583981583555" class="btn-gold">Ver Detalhes</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img img-toalha"></div>
+                <h3>Linha Casa & Presentes</h3>
+                <p>Toalhas personalizadas para batizados e datas especiais.</p>
+                <br>
+                <a href="https://wa.me/5583981583555" class="btn-gold">Ver Detalhes</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img img-kit"></div>
+                <h3>Kits Corporativos</h3>
+                <p>Personalização de uniformes e brindes de luxo.</p>
+                <br>
+                <a href="https://wa.me/5583981583555" class="btn-gold">Ver Detalhes</a>
+            </div>
+
+        </div>
+    </div>
+
+    <section id="sobre" style="background: white; padding: 80px 20px;">
+        <div class="container" style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
+            <div style="flex: 1; min-width: 300px;">
+                <img src="foto-ateliê.jpg" alt="Nosso Ateliê" style="width: 100%; border-radius: 10px; box-shadow: 20px 20px 0 var(--primary);">
+            </div>
+            <div style="flex: 1; min-width: 300px;">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px;">Tradição e Tecnologia</h2>
+                <p>Na LD Bordados, unimos a precisão do bordado computadorizado com o olhar atento ao detalhe que só o trabalho artesanal possui. Localizados em João Pessoa, atendemos todo o Brasil enviando arte e devoção em forma de fios.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="footer-grid">
+            <div>
+                <img src="seu-logo-branco.png" alt="LD Bordados" style="height: 50px;">
+                <p>Transformando fios em momentos inesquecíveis.</p>
+            </div>
+            <div>
+                <h4>Contato</h4>
+                <p>📍 João Pessoa - PB</p>
+                <p>📞 (83) 98158-3555</p>
+                <p>✉️ contato@ldbordados.com.br</p>
+            </div>
+            <div>
+                <h4>Siga-nos</h4>
+                <a href="https://www.instagram.com/ldbordados_personalizados/" style="color:white">Instagram</a>
+            </div>
+        </div>
+        <p>&copy; 2024 LD Bordados Personalizados - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
