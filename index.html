@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RW9LR2LWG4"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RW9LR2LWG4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -53,7 +52,6 @@
             transition: all 0.3s ease;
         }
 
-        /* AUMENTO DA LOGO AQUI (De 60px para 85px) */
         .logo img {
             height: 85px; 
             display: block;
@@ -102,7 +100,7 @@
             color: var(--primary);
         }
 
-        /* --- Primeira Dobra (Hero Section) - Onde a mágica acontece! --- */
+        /* --- Primeira Dobra (Hero Section) --- */
         .hero {
             height: 90vh;
             /* Máscara escura sobre a foto para o texto branco ler bem */
@@ -205,8 +203,9 @@
         .product-img {
             width: 100%;
             height: 300px;
-            background-color: #eee;
-            background-size: cover;
+            background-color: transparent; /* Removido o fundo cinza para ficar limpo */
+            background-size: contain; /* AJUSTE AQUI: Evita que a foto corte */
+            background-repeat: no-repeat;
             background-position: center;
             transition: transform 0.5s ease;
         }
@@ -269,24 +268,40 @@
             color: var(--primary);
         }
 
-        /* Espaço para o cliente em destaque (Danilo Alves) */
-        .cliente-destaque {
-            margin-top: 60px;
+        /* --- Área de Clientes em Destaque (Ajustada para múltiplos clientes) --- */
+        .clientes-destaque-wrapper {
+            margin-top: 80px;
             padding-top: 60px;
             border-top: 1px solid #eaeaea;
+        }
+
+        .titulo-destaque {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 40px;
+        }
+
+        .clientes-destaque-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap; /* Faz quebrar a linha no celular */
+        }
+
+        .cliente-destaque-item {
             display: flex;
             flex-direction: column;
             align-items: center;
+            max-width: 300px;
         }
 
         .img-cliente-destaque {
-            width: 280px;
+            width: 100%;
+            max-width: 280px;
             height: 280px;
-            background-color: #eee;
-            /* COLOQUE AQUI A FOTO DO DANILO -> cliente-danilo.jpg */
-            background-image: url('cliente-danilo.jpg'); 
-            background-size: cover;
-            background-position: center;
+            object-fit: contain; /* AJUSTE AQUI: Mostra a imagem toda sem cortar */
+            background-color: transparent;
             border-radius: 15px;
             border: 4px solid var(--primary);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
@@ -299,7 +314,7 @@
         }
 
         .arroba-cliente {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-family: 'Playfair Display', serif;
             font-weight: 700;
         }
@@ -346,7 +361,7 @@
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        /* Classes para a animação de rolagem (JavaScript ativa isso) */
+        /* Classes para a animação de rolagem */
         .reveal {
             opacity: 0;
             transform: translateY(50px);
@@ -374,7 +389,6 @@
             text-align: left;
         }
 
-        /* AUMENTO DA LOGO DO RODAPÉ AQUI (De 50px para 75px) */
         .footer-logo img { 
             height: 75px; 
             margin-bottom: 20px; 
@@ -386,11 +400,9 @@
         /* --- Responsividade (Para Celulares) --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            nav ul { display: none; } /* Oculta o menu de texto no celular para ficar limpo */
-            .btn-header { display: none; } /* Esconde o botão do cabeçalho no mobile por espaço */
+            nav ul { display: none; } 
+            .btn-header { display: none; } 
             .hero p { font-size: 1rem; }
-            
-            /* No celular, a foto do ateliê e o texto empilham certinho */
             .sobre-container { flex-direction: column; } 
         }
     </style>
@@ -490,13 +502,26 @@
             </div>
         </div>
 
-        <div class="cliente-destaque reveal">
-            <h3 style="margin-bottom: 20px; font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--secondary);">Veste quem você confia</h3>
-            <div class="img-cliente-destaque"></div>
-            <p class="arroba-cliente"><a href="https://www.instagram.com/daniloalvestv/" target="_blank">@daniloalvestv</a></p>
-            <p style="max-width: 600px; text-align: center; margin-top: 10px; color: #666;">
-                É uma honra ver nossa arte marcando presença no dia a dia de grandes profissionais. Qualidade e exclusividade em cada ponto!
-            </p>
+        <div class="clientes-destaque-wrapper reveal">
+            <h3 class="titulo-destaque">Veste quem você confia</h3>
+            
+            <div class="clientes-destaque-container">
+                <div class="cliente-destaque-item">
+                    <img src="cliente-danilo.jpg" alt="Danilo Alves" class="img-cliente-destaque">
+                    <p class="arroba-cliente"><a href="https://www.instagram.com/daniloalvestv/" target="_blank">@daniloalvestv</a></p>
+                    <p style="text-align: center; margin-top: 10px; color: #666;">
+                        É uma honra ver nossa arte marcando presença no dia a dia de grandes profissionais. Qualidade e exclusividade em cada ponto!
+                    </p>
+                </div>
+
+                <div class="cliente-destaque-item">
+                    <img src="cliente-padre-coronel.jpg" alt="Padre Coronel" class="img-cliente-destaque">
+                    <p class="arroba-cliente">Pr. Alex</p>
+                    <p style="text-align: center; margin-top: 10px; color: #666;">
+                        Trabalho de excelência e muita dedicação nos detalhes. É uma alegria confeccionar peças que representam tanta autoridade e fé.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -511,7 +536,6 @@
                 <br>
                 <p>📍 João Pessoa - PB</p>
                 <p>📞 (83) 98158-3555</p>
-                <p>✉️ contato@ldbordados.com.br</p>
             </div>
             <div>
                 <h4>Siga-nos</h4>
