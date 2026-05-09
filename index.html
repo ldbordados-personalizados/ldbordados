@@ -12,13 +12,13 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LD Bordados Personalizados | Vestes Litúrgicas e Enxovais em João Pessoa</title>
-<meta name="description" content="Especialistas em bordados computadorizados de alto padrão em João Pessoa. Confeccionamos vestes litúrgicas, casulas, estolas e enxovais personalizados com excelência.">
+<meta name="description" content="Especialistas em bordados computadorizados de alto padrão in João Pessoa. Confeccionamos vestes litúrgicas, casulas, estolas e enxovais personalizados com excelência.">
 <meta name="keywords" content="bordados personalizados joão pessoa, vestes litúrgicas, casulas, estolas sacerdotais, enxoval de bebê bordado, fardamento corporativo, LD Bordados, bordado computadorizado PB">
 <meta name="author" content="LD Bordados">
 <meta name="robots" content="index, follow"> <link rel="canonical" href="https://ldbordados-personalizados.github.io/ldbordados/"> <meta property="og:locale" content="pt_BR">
 <meta property="og:type" content="website">
-<meta property="og:title" content="LD Bordados Personalizados | Arte e Exclusividade em João Pessoa">
-<meta property="og:description" content="Tradição e qualidade em vestes litúrgicas e enxovais exclusivos. Faça seu orçamento direto pelo WhatsApp!">
+<meta property="og:title" content="LD Bordados Personalizados | Arte e Exclusividade in João Pessoa">
+<meta property="og:description" content="Tradição e qualidade in vestes litúrgicas e enxovais exclusivos. Faça seu orçamento direto pelo WhatsApp!">
 <meta property="og:url" content="https://ldbordados-personalizados.github.io/ldbordados/">
 <meta property="og:site_name" content="LD Bordados Personalizados">
 <meta property="og:image" content="https://ldbordados-personalizados.github.io/ldbordados/produto-casula.jpg"> 
@@ -53,7 +53,7 @@
     "longitude": -34.861
   },
   "priceRange": "$$",
-  "description": "Especialista em bordados computadorizados, vestes litúrgicas, casulas e enxovais personalizados em João Pessoa, Paraíba."
+  "description": "Especialista in bordados computadorizados, vestes litúrgicas, casulas e enxovais personalizados in João Pessoa, Paraíba."
 }
 </script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -148,9 +148,9 @@
         /* --- NOVO SLIDER HERO --- */
         .hero-slider {
             position: relative;
-            height: 90vh;
+            height: 85vh; /* Ajuste para não criar scroll desnecessário */
             width: 100%;
-            margin-top: 80px;
+            margin-top: 115px; /* AJUSTE CRUCIAL: Agora a margem tem a exata altura do cabeçalho, a imagem não será mais cortada no topo */
             overflow: hidden;
             background-color: #110f0d; /* Fundo base para integrar com o blur */
         }
@@ -519,11 +519,40 @@
 
         /* --- Responsividade (Para Celulares) --- */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
             nav ul { display: none; } 
             .btn-header { display: none; } 
-            .hero-content p { font-size: 1rem; }
             .sobre-container { flex-direction: column; } 
+
+            /* --- Ajustes do Slider PROFISSIONAIS para celular --- */
+            .hero-slider {
+                margin-top: 115px; /* Mantém o topo livre no celular também */
+                height: 50vh; /* Banner mais curto reduz a área de blur e destaca mais a foto central! */
+            }
+            .slide {
+                background-size: contain; /* Mantemos o contain para NENHUM detalhe lateral ser cortado */
+                background-position: center;
+                justify-content: flex-end; /* AJUSTE VITAL: Empurra os botões e texto para baixo */
+                padding-bottom: 30px; /* Para não encostar totalmente no fundo */
+            }
+            
+            /* Ajuste dos Textos para Mobile */
+            .hero-content h1 { 
+                font-size: 1.8rem; /* Título um pouco menor para caber perfeito sem quebrar feio */
+                margin-bottom: 10px;
+            } 
+            .hero-content p { 
+                font-size: 0.95rem; 
+                margin-bottom: 15px;
+            }
+
+            /* Setas menores no celular para não poluir a tela */
+            .slider-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+            .prev { left: 10px; }
+            .next { right: 10px; }
         }
     </style>
 </head>
@@ -626,7 +655,7 @@
             <div style="flex: 1; min-width: 300px;">
                 <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px; color: var(--secondary);">Tradição e Tecnologia</h2>
                 <p style="margin-bottom: 15px;">Na LD Bordados, unimos a precisão do bordado computadorizado com o olhar atento ao detalhe que só o trabalho artesanal possui.</p>
-                <p>Localizados em João Pessoa, atendemos todo o Brasil enviando arte, cuidado e devoção em forma de fios diretamente para você.</p>
+                <p>Localizados in João Pessoa, atendemos todo o Brasil enviando arte, cuidado e devoção in forma de fios diretamente para você.</p>
             </div>
         </div>
     </section>
@@ -643,11 +672,11 @@
                 <p class="cliente-nome">- Maria das Graças</p>
             </div>
             <div class="depoimento-card">
-                <p>"Os uniformes da nossa clínica ficaram perfeitos! O bordado em dourado deu um toque de muita elegância e profissionalismo."</p>
+                <p>"Os uniformes da nossa clínica ficaram perfeitos! O bordado in dourado deu um toque de muita elegância e profissionalismo."</p>
                 <p class="cliente-nome">- Dra. Beatriz Castro</p>
             </div>
             <div class="depoimento-card">
-                <p>"Atendimento maravilhoso e cuidado em cada detalhe. A estola personalizada que encomendei superou todas as expectativas."</p>
+                <p>"Atendimento maravilhoso e cuidado in cada detalhe. A estola personalizada que encomendei superou todas as expectativas."</p>
                 <p class="cliente-nome">- Diác. João Paulo</p>
             </div>
         </div>
@@ -660,7 +689,7 @@
                     <img src="cliente-danilo.jpg" alt="Danilo Alves" class="img-cliente-destaque">
                     <p class="arroba-cliente"><a href="https://www.instagram.com/daniloalvestv/" target="_blank">@daniloalvestv</a></p>
                     <p style="text-align: center; margin-top: 10px; color: #666;">
-                        É uma honra ver nossa arte marcando presença no dia a dia de grandes profissionais. Qualidade e exclusividade em cada ponto!
+                        É uma honra ver nossa arte marcando presença no dia a dia de grandes profissionais. Qualidade e exclusividade in cada ponto!
                     </p>
                 </div>
 
@@ -679,7 +708,7 @@
         <div class="footer-grid">
             <div class="footer-logo">
                 <img src="seu-logo-branco.png" alt="LD Bordados">
-                <p style="opacity: 0.8;">Transformando fios em momentos inesquecíveis.</p>
+                <p style="opacity: 0.8;">Transformando fios in momentos inesquecíveis.</p>
             </div>
             <div>
                 <h4>Contato</h4>
