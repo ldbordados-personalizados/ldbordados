@@ -79,6 +79,7 @@
             color: var(--secondary);
             line-height: 1.6;
             scroll-behavior: smooth;
+            overflow-x: hidden; /* Evita rolagem horizontal no celular */
         }
 
         /* --- Cabeçalho (Header) --- */
@@ -144,36 +145,111 @@
             color: var(--primary);
         }
 
-        /* --- Primeira Dobra (Hero Section) --- */
-        .hero {
+        /* --- NOVO SLIDER HERO --- */
+        .hero-slider {
+            position: relative;
             height: 90vh;
-            /* Máscara escura sobre a foto para o texto branco ler bem */
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('banner-principal.jpg'); 
-            background-size: cover;
+            width: 100%;
+            margin-top: 80px;
+            overflow: hidden;
+            background-color: #110f0d; /* Fundo base para integrar com o blur */
+        }
+
+        .slider-container {
+            display: flex;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            /* AJUSTES PARA NÃO CORTAR A IMAGEM 👇 */
+            background-size: contain; 
+            background-repeat: no-repeat; 
+            background-color: transparent; 
+            /* 👆 AJUSTES PARA NÃO CORTAR A IMAGEM */
             background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            position: relative;
+        }
+
+        /* Fundo Desfocado (Blur) - Fica atrás da imagem nítida principal */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: -50px; left: -50px; right: -50px; bottom: -50px; /* Margem negativa esconde a borda do desfoque */
+            background-image: inherit; /* Puxa magicamente a mesma foto do slide */
+            background-size: cover; /* Estica para preencher os buracos do 'contain' */
+            background-position: center;
+            filter: blur(30px); /* Intensidade do desfoque */
+            z-index: -1; /* Joga para trás da imagem original */
+            opacity: 0.6; /* Deixa suave */
+        }
+
+        /* Máscara com gradiente suave - Fica na frente de tudo, escurecendo a base para o texto ler bem */
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(15, 12, 10, 0.1) 0%, rgba(15, 12, 10, 0.85) 100%);
+            z-index: 1; /* Sobrepõe a imagem */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2; /* Fica acima de todas as imagens e máscaras */
             text-align: center;
             color: var(--white);
             padding: 0 20px;
-            margin-top: 80px;
         }
 
-        .hero h1 {
+        .hero-content h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3.8rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para destacar o título */
+            text-shadow: 0px 4px 15px rgba(0,0,0,0.8); /* Sombra difusa e profissional */
         }
 
-        .hero p {
+        .hero-content p {
             font-size: 1.2rem;
             max-width: 700px;
-            margin-bottom: 35px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            margin: 0 auto 35px auto;
+            text-shadow: 0px 2px 8px rgba(0,0,0,0.8);
         }
+
+        /* Setas do Slider - Toque moderno e sofisticado (Glassmorphism) */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .slider-btn:hover { 
+            background: var(--primary); 
+            border-color: var(--primary);
+            transform: translateY(-50%) scale(1.1); /* Efeito de zoom ao passar o mouse */
+        }
+        .prev { left: 20px; }
+        .next { right: 20px; }
 
         /* --- Botões de Alta Conversão --- */
         .btn-gold {
@@ -443,10 +519,10 @@
 
         /* --- Responsividade (Para Celulares) --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero-content h1 { font-size: 2.5rem; }
             nav ul { display: none; } 
             .btn-header { display: none; } 
-            .hero p { font-size: 1rem; }
+            .hero-content p { font-size: 1rem; }
             .sobre-container { flex-direction: column; } 
         }
     </style>
@@ -472,10 +548,40 @@
         </nav>
     </header>
 
-    <section id="inicio" class="hero reveal">
-        <h1>Bordados que Contam Histórias</h1>
-        <p>Especialistas em Vestes Litúrgicas e Enxovais Personalizados com acabamento de alta costura.</p>
-        <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20LD%20Bordados%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="btn-gold" target="_blank">Solicitar Orçamento Grátis</a>
+    <section id="inicio" class="hero-slider reveal">
+        <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
+        
+        <div class="slider-container" id="slider">
+            <div class="slide" style="background-image: url('slide1.jpg');">
+                <div class="hero-content">
+                    <h1>Bordados que Elevam a Fé</h1>
+                    <p>Vestes litúrgicas confeccionadas com devoção e precisão.</p>
+                    <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20LD%20Bordados%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="btn-gold" target="_blank">Solicitar Orçamento</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('slide2.jpg');">
+                <div class="hero-content">
+                    <h1>Detalhes que Encantam</h1>
+                    <p>Qualidade de luxo em cada ponto do bordado computadorizado.</p>
+                    <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20bordados." class="btn-gold" target="_blank">Falar com Consultor</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('slide3.jpg');">
+                <div class="hero-content">
+                    <h1>Sua Marca em Destaque</h1>
+                    <p>Kits corporativos e fardamentos de alto padrão.</p>
+                    <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20corporativo." class="btn-gold" target="_blank">Pedir Orçamento</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('slide4.jpg');">
+                <div class="hero-content">
+                    <h1>Presentes Inesquecíveis</h1>
+                    <p>Toalhas e enxovais personalizados para momentos únicos.</p>
+                    <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Quero%20ver%20op%C3%A7%C3%B5es%20de%20presentes." class="btn-gold" target="_blank">Ver Opções</a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <div class="container" id="produtos">
@@ -591,19 +697,42 @@
     </footer>
 
     <script>
+        // FUNÇÃO ANTIGA DE REVEAL (MANTIDA INTACTA)
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100; // Ponto onde a animação dispara
+                var elementVisible = 100;
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
                 }
             }
         }
         window.addEventListener("scroll", reveal);
-        reveal(); // Ativa para os elementos que já estão na tela ao carregar
+        reveal(); 
+
+        // NOVA FUNÇÃO DO SLIDER
+        let currentSlide = 0;
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            updateSlider();
+        }
+
+        // Passa o slide automaticamente a cada 5 segundos
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
     </script>
 </body>
 </html>
