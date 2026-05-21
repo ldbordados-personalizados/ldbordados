@@ -442,31 +442,40 @@
         .prev { left: 50px; }
         .next { right: 50px; }
 
+        /* Container que agrupa os botões */
         .slider-dots {
-            position: absolute;
-            bottom: 60px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 16px;
-            z-index: 10;
+        position: absolute; /* Faz os botões flutuarem sobre o slide */
+        bottom: 40px; /* Ajuste este valor para mover mais para cima ou para baixo */
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px; /* Espaço entre os botões */
+        z-index: 10; /* Garante que fiquem acima da imagem */
+        padding: 0; /* Remove qualquer padding que esteja empurrando para baixo */
         }
 
         .dot {
-            width: 45px;
-            height: 1px;
-            background: rgba(255,255,255,0.25);
-            cursor: pointer;
-            transition: all 0.6s var(--ease-cinematic);
-            border: none;
-            padding: 10px 0;
-            background-clip: content-box;
-            -webkit-tap-highlight-color: transparent;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+        }
+
+        .dot:hover {
+        border-color: #fff;
         }
 
         .dot.active {
-            background-color: var(--primary-light);
-            box-shadow: 0 0 20px rgba(197,160,89,0.5);
+        background: #fff; /* Ou use o dourado: #D5AD6D */
+        border-color: #fff;
+        transform: scale(1.1); /* Dá um leve "pulo" no tamanho */
+        box-shadow: 0 0 8px rgba(0,0,0,0.3); /* Sombra para destacar da foto */
         }
 
         /* ==============================
