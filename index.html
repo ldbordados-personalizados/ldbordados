@@ -35,7 +35,7 @@
     <meta name="twitter:image" content="https://ldbordados-personalizados.github.io/ldbordados/produto-casula.jpg">
 
     <script src="https://unpkg.com/lucide@latest"></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -441,6 +441,211 @@
 
         .prev { left: 50px; }
         .next { right: 50px; }
+                /* =========================================
+        HERO PREMIUM (AWWWARDS STYLE)
+        ========================================= */
+        .hero-premium {
+            position: relative;
+            height: 100svh;
+            width: 100%;
+            background-color: #0b0a0a;
+            overflow: hidden;
+        }
+
+        .swiper.heroSwiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Background com Zoom Lento (Efeito Ken Burns) */
+        .slide-bg {
+            position: absolute;
+            inset: -5%; /* Leve sobra para o Parallax não cortar as bordas */
+            background-size: cover;
+            background-position: center;
+            transform: scale(1);
+            transition: transform 10s linear;
+        }
+
+        /* Aumenta o zoom apenas no slide ativo */
+        .swiper-slide-active .slide-bg {
+            transform: scale(1.1);
+        }
+
+        /* Overlay Escuro para o texto brilhar */
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.5) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+            max-width: 900px;
+            padding: 0 5%;
+        }
+        
+
+        /* O segredo da animação de luxo: A Máscara */
+        .reveal-mask {
+            overflow: hidden; /* Esconde o texto que está fora da div */
+            margin-bottom: 10px;
+        }
+
+        /* Tipografia Fluida e Elegante */
+        .hero-eyebrow {
+            font-size: clamp(10px, 1.2vw, 14px);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #C5A059; /* Seu Dourado */
+            transform: translateY(100%); /* Começa escondido para baixo */
+            opacity: 0;
+        }
+
+        .slide-title {
+            font-size: clamp(3rem, 7vw, 6.5rem);
+            line-height: 1.1;
+            font-weight: 400;
+            margin: 10px 0;
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        .slide-desc {
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        .btn-wrapper {
+            transform: translateY(100%);
+            opacity: 0;
+            overflow: hidden;
+            display: inline-block;
+        }
+        
+
+        /* Dispara a animação apenas quando o slide fica ativo */
+        .swiper-slide-active .hero-eyebrow { animation: revealText 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; }
+        .swiper-slide-active .slide-title { animation: revealText 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; }
+        .swiper-slide-active .slide-desc { animation: revealText 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; }
+        .swiper-slide-active .btn-wrapper { animation: revealText 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards; }
+
+        @keyframes revealText {
+            0% { transform: translateY(100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* ─── Botão Premium ─── */
+        .btn-gold-premium {
+            position: relative;
+            display: inline-flex;
+            padding: 16px 40px;
+            border: 1px solid rgba(197, 160, 89, 0.5); /* Borda dourada sutil */
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 13px;
+            overflow: hidden;
+            transition: color 0.4s ease;
+        }
+
+        .btn-gold-premium span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-gold-premium .btn-hover-effect {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            background-color: #C5A059;
+            transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1;
+        }
+
+        .btn-gold-premium:hover .btn-hover-effect {
+            height: 100%;
+        }
+
+        /* ─── Controles Inferiores (Interface) ─── */
+        .slider-ui-container {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            width: 100%;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* Barra de Progresso, esqueça as bolinhas (pontinhos) */
+        .slider-progress-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #fff;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .swiper-pagination {
+            position: relative !important;
+            width: 150px !important;
+            height: 1px !important;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .swiper-pagination-progressbar-fill {
+            background: #C5A059 !important; /* Dourado preenchendo a barra */
+        }
+
+        /* Setas minimalistas */
+        .slider-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .swiper-button-prev-custom, .swiper-button-next-custom {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: transparent;
+            backdrop-filter: blur(10px);
+        }
+
+        .swiper-button-prev-custom:hover, .swiper-button-next-custom:hover {
+            background: #C5A059;
+            border-color: #C5A059;
+            color: #000;
+        }
 
         /* Container que agrupa os botões */
         .slider-dots {
@@ -1340,6 +1545,217 @@
             
             .depoimento-card { padding: 40px 30px; }
         }
+
+                /* =========================================
+        HERO PREMIUM & DIREÇÃO DE ARTE (OPÇÃO 2)
+        ========================================= */
+        .hero-premium {
+            position: relative;
+            height: 100svh;
+            width: 100%;
+            background-color: #0b0a0a;
+            overflow: hidden;
+        }
+
+        .swiper.heroSwiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .slide-bg {
+            position: absolute;
+            inset: -2%;
+            background-size: cover;
+            transform: scale(1);
+            transition: transform 12s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .swiper-slide-active .slide-bg {
+            transform: scale(1.04);
+        }
+
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.6) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+            max-width: 850px;
+            padding: 0 24px;
+        }
+
+        .reveal-mask {
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .hero-eyebrow {
+            font-size: clamp(11px, 1vw, 14px);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #C5A059;
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        .slide-title {
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            line-height: 1.1;
+            font-weight: 300;
+            margin: 12px 0;
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        .slide-desc {
+            font-size: clamp(0.95rem, 1.3vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 580px;
+            margin: 0 auto 32px;
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        .btn-wrapper {
+            transform: translateY(100%);
+            opacity: 0;
+            display: inline-block;
+        }
+
+        /* Ativação das animações de texto */
+        .swiper-slide-active .hero-eyebrow { animation: revealText 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards; }
+        .swiper-slide-active .slide-title { animation: revealText 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; }
+        .swiper-slide-active .slide-desc { animation: revealText 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; }
+        .swiper-slide-active .btn-wrapper { animation: revealText 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; }
+
+        @keyframes revealText {
+            0% { transform: translateY(100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Botão de Luxo */
+        .btn-gold-premium {
+            position: relative;
+            display: inline-flex;
+            padding: 16px 42px;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: 500;
+            overflow: hidden;
+            transition: color 0.4s ease, border-color 0.4s ease;
+        }
+
+        .btn-gold-premium span { position: relative; z-index: 2; }
+        .btn-gold-premium .btn-hover-effect {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 0%;
+            background-color: #C5A059;
+            transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1;
+        }
+        .btn-gold-premium:hover { border-color: #C5A059; color: #000; }
+        .btn-gold-premium:hover .btn-hover-effect { height: 100%; }
+
+        /* UI de Navegação */
+        .slider-ui-container {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            width: 100%;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .slider-progress-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: rgba(255,255,255,0.6);
+            font-family: monospace;
+            font-size: 13px;
+        }
+
+        .slider-number.current { color: #C5A059; font-weight: bold; }
+
+        .swiper-pagination {
+            position: relative !important;
+            width: 120px !important;
+            height: 2px !important;
+            background: rgba(255,255,255,0.15);
+        }
+
+        .swiper-pagination-progressbar-fill {
+            background: #C5A059 !important;
+        }
+
+        .slider-nav { display: flex; gap: 12px; }
+
+        .swiper-button-prev-custom, .swiper-button-next-custom {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+        }
+
+        .swiper-button-prev-custom:hover, .swiper-button-next-custom:hover {
+            background: #C5A059;
+            border-color: #C5A059;
+            color: #0b0a0a;
+        }
+
+        /* ──────────────────────────────────────────────────────────
+        MAPEAMENTO DAS IMAGENS: DESKTOP (Ecrãs Grandes)
+        ────────────────────────────────────────────────────────── */
+        @media (min-width: 769px) {
+            /* Fotos Horizontais Otimizadas para Computadores */
+            .bg-slide-1 { background-image: url('slide1-desktop.jpg'); background-position: center 15%; }
+            .bg-slide-2 { background-image: url('slide2-desktop.jpg'); background-position: center center; }
+            .bg-slide-3 { background-image: url('slide3-desktop.jpg'); background-position: center center; }
+            .bg-slide-4 { background-image: url('slide4-desktop.jpg'); background-position: center 60%; }
+        }
+
+        /* ──────────────────────────────────────────────────────────
+        MAPEAMENTO DAS IMAGENS: MOBILE (Telemóvel / Tablet Vertical)
+        ────────────────────────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .slider-ui-container { bottom: 24px; }
+            .swiper-pagination { width: 80px !important; }
+            
+            /* Fotos Verticais (Estilo Reels/Stories) Otimizadas para Telemóvel */
+            .bg-slide-1 { background-image: url('slide1-mobile.jpg'); background-position: center center; }
+            .bg-slide-2 { background-image: url('slide2-mobile.jpg'); background-position: center center; }
+            .bg-slide-3 { background-image: url('slide3-mobile.jpg'); background-position: center center; }
+            .bg-slide-4 { background-image: url('slide4-mobile.jpg'); background-position: center center; }
+        }
     </style>
 </head>
 <body>
@@ -1391,50 +1807,93 @@
         </button>
     </header>
 
-    <section id="inicio" class="hero-slider" aria-label="Banner principal">
-        <button class="slider-btn prev" onclick="moveSlide(-1)" aria-label="Slide anterior">&#10094;</button>
-        <button class="slider-btn next" onclick="moveSlide(1)" aria-label="Próximo slide">&#10095;</button>
+   <section id="inicio" class="hero-premium">
+        <div class="swiper heroSwiper">
+            <div class="swiper-wrapper">
+                
+                <div class="swiper-slide">
+                    <div class="slide-bg bg-slide-1" data-swiper-parallax="30%"></div>
+                    <div class="slide-overlay"></div>
+                    
+                    <div class="hero-content">
+                        <div class="reveal-mask">
+                            <p class="hero-eyebrow" data-swiper-parallax="-300">Ateliê de Alto Padrão em João Pessoa</p>
+                        </div>
+                        <div class="reveal-mask">
+                            <h1 class="slide-title" data-swiper-parallax="-400">Bordados que Elevam a Fé</h1>
+                        </div>
+                        <div class="reveal-mask">
+                            <p class="slide-desc" data-swiper-parallax="-500">Vestes litúrgicas confeccionadas com devoção, precisão artesanal e acabamento impecável.</p>
+                        </div>
+                        <div class="btn-wrapper" data-swiper-parallax="-600">
+                            <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20LD%20Bordados%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="btn-gold-premium" target="_blank" rel="noopener noreferrer">
+                                <span>Solicitar Orçamento</span>
+                                <div class="btn-hover-effect"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="slider-container" id="slider">
-            <div class="slide" style="background-image: url('slide1.jpg');" role="img" aria-label="Bordados que elevam a fé — Vestes litúrgicas">
-                <div class="hero-content">
-                    <p class="hero-eyebrow">Ateliê de Alto Padrão em João Pessoa</p>
-                    <h1>Bordados que Elevam a Fé</h1>
-                    <p>Vestes litúrgicas confeccionadas com devoção, precisão artesanal e acabamento impecável.</p>
-                    <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20LD%20Bordados%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="btn-gold" target="_blank" rel="noopener noreferrer">Solicitar Orçamento</a>
+                <div class="swiper-slide">
+                    <div class="slide-bg bg-slide-2" data-swiper-parallax="30%"></div>
+                    <div class="slide-overlay"></div>
+                    
+                    <div class="hero-content">
+                        <div class="reveal-mask"><p class="hero-eyebrow" data-swiper-parallax="-300">Tecnologia e Tradição Reunidas</p></div>
+                        <div class="reveal-mask"><h1 class="slide-title" data-swiper-parallax="-400">Detalhes que Encantam</h1></div>
+                        <div class="reveal-mask"><p class="slide-desc" data-swiper-parallax="-500">Qualidade premium em cada ponto do bordado computadorizado, refletindo excelência.</p></div>
+                        <div class="btn-wrapper" data-swiper-parallax="-600">
+                            <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20bordados." class="btn-gold-premium" target="_blank" rel="noopener noreferrer"><span>Falar com Consultor</span><div class="btn-hover-effect"></div></a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="slide" style="background-image: url('slide2.jpg');" role="img" aria-label="Detalhes que encantam — Bordado computadorizado">
-                <div class="hero-content">
-                    <p class="hero-eyebrow">Tecnologia e Tradição Reunidas</p>
-                    <h1>Detalhes que Encantam</h1>
-                    <p>Qualidade premium em cada ponto do bordado computadorizado, refletindo excelência.</p>
-                    <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20bordados." class="btn-gold" target="_blank" rel="noopener noreferrer">Falar com Consultor</a>
-                </div>
-            </div>
-            <div class="slide" style="background-image: url('slide3.jpg');" role="img" aria-label="Sua marca em destaque — Kits corporativos">
-                <div class="hero-content">
-                    <p class="hero-eyebrow">Identidade e Sofisticação</p>
-                    <h1>Sua Marca em Destaque</h1>
-                    <p>Kits corporativos e fardamentos de luxo desenvolvidos para empresas exigentes.</p>
-                    <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20corporativo." class="btn-gold" target="_blank" rel="noopener noreferrer">Pedir Orçamento</a>
-                </div>
-            </div>
-            <div class="slide" style="background-image: url('slide4.jpg');" role="img" aria-label="Presentes inesquecíveis — Toalhas e enxovais">
-                <div class="hero-content">
-                    <p class="hero-eyebrow">Enxovais e Presentes Exclusivos</p>
-                    <h1>Presentes Inesquecíveis</h1>
-                    <p>Toalhas e enxovais personalizados para celebrar os momentos mais especiais da vida.</p>
-                    <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Quero%20ver%20op%C3%A7%C3%B5es%20de%20presentes." class="btn-gold" target="_blank" rel="noopener noreferrer">Ver Opções</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="slider-dots" id="sliderDots" aria-label="Navegação do slider">
-            <button class="dot active" onclick="goToSlide(0)" aria-label="Slide 1"></button>
-            <button class="dot" onclick="goToSlide(1)" aria-label="Slide 2"></button>
-            <button class="dot" onclick="goToSlide(2)" aria-label="Slide 3"></button>
-            <button class="dot" onclick="goToSlide(3)" aria-label="Slide 4"></button>
+                <div class="swiper-slide">
+                    <div class="slide-bg bg-slide-3" data-swiper-parallax="30%"></div>
+                    <div class="slide-overlay"></div>
+                    
+                    <div class="hero-content">
+                        <div class="reveal-mask"><p class="hero-eyebrow" data-swiper-parallax="-300">Identidade e Sofisticação</p></div>
+                        <div class="reveal-mask"><h1 class="slide-title" data-swiper-parallax="-400">Sua Marca em Destaque</h1></div>
+                        <div class="reveal-mask"><p class="slide-desc" data-swiper-parallax="-500">Kits corporativos e fardamentos de luxo desenvolvidos para empresas exigentes.</p></div>
+                        <div class="btn-wrapper" data-swiper-parallax="-600">
+                            <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20corporativo." class="btn-gold-premium" target="_blank" rel="noopener noreferrer"><span>Pedir Orçamento</span><div class="btn-hover-effect"></div></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="slide-bg bg-slide-4" data-swiper-parallax="30%"></div>
+                    <div class="slide-overlay"></div>
+                    
+                    <div class="hero-content">
+                        <div class="reveal-mask"><p class="hero-eyebrow" data-swiper-parallax="-300">Enxovais e Presentes Exclusivos</p></div>
+                        <div class="reveal-mask"><h1 class="slide-title" data-swiper-parallax="-400">Presentes Inesquecíveis</h1></div>
+                        <div class="reveal-mask"><p class="slide-desc" data-swiper-parallax="-500">Toalhas e enxovais personalizados para celebrar os momentos mais especiais da vida.</p></div>
+                        <div class="btn-wrapper" data-swiper-parallax="-600">
+                            <a href="https://wa.me/5583981583555?text=Ol%C3%A1!%20Quero%20ver%20op%C3%A7%C3%B5es%20de%20presentes." class="btn-gold-premium" target="_blank" rel="noopener noreferrer"><span>Ver Opções</span><div class="btn-hover-effect"></div></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="slider-ui-container">
+                <div class="slider-progress-wrapper">
+                    <div class="slider-number current">01</div>
+                    <div class="swiper-pagination"></div>
+                    <div class="slider-number total">04</div>
+                </div>
+
+                <div class="slider-nav">
+                    <button class="swiper-button-prev-custom" aria-label="Slide anterior">
+                        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="1.2" fill="none"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button class="swiper-button-next-custom" aria-label="Próximo slide">
+                        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="1.2" fill="none"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1730,6 +2189,38 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    // Inicialização da Hero Cinematográfica
+    const heroSwiper = new Swiper(".heroSwiper", {
+        speed: 1200, // Transição lenta e majestosa
+        parallax: true, // Liga o efeito 3D no background e nos textos
+        grabCursor: true, // Muda o cursor para "mãozinha" indicando que pode arrastar
+        effect: "slide",
+        autoplay: {
+            delay: 6000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            type: "progressbar", // Barra de progresso luxuosa no rodapé
+        },
+        navigation: {
+            nextEl: ".swiper-button-next-custom",
+            prevEl: ".swiper-button-prev-custom",
+        },
+        on: {
+            // Atualiza o contador de números (01 ... 04)
+            slideChange: function () {
+                const currentNum = document.querySelector('.slider-number.current');
+                // Formata com o zero à esquerda (ex: 01, 02)
+                currentNum.innerHTML = '0' + (this.realIndex + 1);
+            }
+        }
+    });
+</script>
+
     <script>
         // ==============================
         // LUCIDE ICONS INITIALIZATION
@@ -1825,6 +2316,7 @@
                 header.classList.remove('scrolled');
             }
         }, { passive: true });
+        
     </script>
 </body>
 </html>
